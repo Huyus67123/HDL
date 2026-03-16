@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2
-Mon Mar 16 20:34:27 2026
+Mon Mar 16 20:54:23 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -41,10 +41,10 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Mar 16 20:34:27 2026           ;
+; Analysis & Synthesis Status        ; Successful - Mon Mar 16 20:54:23 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; lab2                                            ;
-; Top-level Entity Name              ; count_4bit                                      ;
+; Top-level Entity Name              ; count_4bit_2                                    ;
 ; Family                             ; Cyclone II                                      ;
 ; Total logic elements               ; 5                                               ;
 ;     Total combinational functions  ; 5                                               ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP2C35F672C6       ;                    ;
-; Top-level entity name                                                      ; count_4bit         ; lab2               ;
+; Top-level entity name                                                      ; count_4bit_2       ; lab2               ;
 ; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -154,57 +154,52 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                       ;
-+----------------------------------+-----------------+------------------------+--------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path         ; Library ;
-+----------------------------------+-----------------+------------------------+--------------------------------------+---------+
-; count_4bit.v                     ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/count_4bit.v ;         ;
-; T_flipflop.v                     ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/T_flipflop.v ;         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                         ;
++----------------------------------+-----------------+------------------------+----------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path           ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------------+---------+
+; count_4bit_2.v                   ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/count_4bit_2.v ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------------+---------+
 
 
-+----------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                    ;
-+---------------------------------------------+------------------+
-; Resource                                    ; Usage            ;
-+---------------------------------------------+------------------+
-; Estimated Total logic elements              ; 5                ;
-;                                             ;                  ;
-; Total combinational functions               ; 5                ;
-; Logic element usage by number of LUT inputs ;                  ;
-;     -- 4 input functions                    ; 2                ;
-;     -- 3 input functions                    ; 1                ;
-;     -- <=2 input functions                  ; 2                ;
-;                                             ;                  ;
-; Logic elements by mode                      ;                  ;
-;     -- normal mode                          ; 5                ;
-;     -- arithmetic mode                      ; 0                ;
-;                                             ;                  ;
-; Total registers                             ; 4                ;
-;     -- Dedicated logic registers            ; 4                ;
-;     -- I/O registers                        ; 0                ;
-;                                             ;                  ;
-; I/O pins                                    ; 7                ;
-; Embedded Multiplier 9-bit elements          ; 0                ;
-; Maximum fan-out node                        ; T_flipflop:FF0|Q ;
-; Maximum fan-out                             ; 5                ;
-; Total fan-out                               ; 31               ;
-; Average fan-out                             ; 1.94             ;
-+---------------------------------------------+------------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 5         ;
+;                                             ;           ;
+; Total combinational functions               ; 5         ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 2         ;
+;     -- 3 input functions                    ; 1         ;
+;     -- <=2 input functions                  ; 2         ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 5         ;
+;     -- arithmetic mode                      ; 0         ;
+;                                             ;           ;
+; Total registers                             ; 4         ;
+;     -- Dedicated logic registers            ; 4         ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 7         ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; Q[0]~reg0 ;
+; Maximum fan-out                             ; 5         ;
+; Total fan-out                               ; 31        ;
+; Average fan-out                             ; 1.94      ;
++---------------------------------------------+-----------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name        ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
-; |count_4bit                ; 5 (1)             ; 4 (0)        ; 0           ; 0            ; 0       ; 0         ; 7    ; 0            ; |count_4bit                ; work         ;
-;    |T_flipflop:FF0|        ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |count_4bit|T_flipflop:FF0 ; work         ;
-;    |T_flipflop:FF1|        ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |count_4bit|T_flipflop:FF1 ; work         ;
-;    |T_flipflop:FF2|        ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |count_4bit|T_flipflop:FF2 ; work         ;
-;    |T_flipflop:FF3|        ; 1 (1)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |count_4bit|T_flipflop:FF3 ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |count_4bit_2              ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 7    ; 0            ; |count_4bit_2       ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -238,7 +233,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Mar 16 20:34:26 2026
+    Info: Processing started: Mon Mar 16 20:54:22 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2 -c lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file d_flipflop.v
@@ -247,8 +242,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file count_4
     Info (12023): Found entity 1: count_4bit
 Info (12021): Found 1 design units, including 1 entities, in source file t_flipflop.v
     Info (12023): Found entity 1: T_flipflop
-Info (12127): Elaborating entity "count_4bit" for the top level hierarchy
-Info (12128): Elaborating entity "T_flipflop" for hierarchy "T_flipflop:FF0"
+Info (12021): Found 1 design units, including 1 entities, in source file count_4bit_2.v
+    Info (12023): Found entity 1: count_4bit_2
+Info (12127): Elaborating entity "count_4bit_2" for the top level hierarchy
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 12 device resources after synthesis - the final resource count might be different
@@ -256,8 +252,8 @@ Info (21057): Implemented 12 device resources after synthesis - the final resour
     Info (21059): Implemented 4 output pins
     Info (21061): Implemented 5 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4613 megabytes
-    Info: Processing ended: Mon Mar 16 20:34:27 2026
+    Info: Peak virtual memory: 4612 megabytes
+    Info: Processing ended: Mon Mar 16 20:54:23 2026
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
