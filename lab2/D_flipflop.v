@@ -1,15 +1,13 @@
 module D_flipflop(
-    input CLK, Clean, D,
-    output reg Q,
-    output Qn
+    input CLK, Reset, D,
+    output reg Q
 );
-    assign Qn = ~Q;
 
-    always @(posedge CLK or posedge Clean) begin
-        if (Clean) begin
-            Q <= 1'b0;
+    always @(posedge CLK or negedge Reset) begin
+        if (!Reset) begin
+            Q <= 1'b0; 
         end else begin
-            Q <= D;
+            Q <= D;  
         end
     end
 

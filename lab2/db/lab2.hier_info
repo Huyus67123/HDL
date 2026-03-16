@@ -1,8 +1,38 @@
-|D_flipflop
+|count_4bit
+CLK => CLK.IN4
+ENA => ENA.IN1
+Clear => Clear.IN4
+Q[0] <= T_flipflop:FF0.port3
+Q[1] <= T_flipflop:FF1.port3
+Q[2] <= T_flipflop:FF2.port3
+Q[3] <= T_flipflop:FF3.port3
+
+
+|count_4bit|T_flipflop:FF0
 CLK => Q~reg0.CLK
-Clean => Q~reg0.ACLR
-D => Q~reg0.DATAIN
+Reset => Q~reg0.ACLR
+T => Q~reg0.ENA
 Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
-Qn <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_4bit|T_flipflop:FF1
+CLK => Q~reg0.CLK
+Reset => Q~reg0.ACLR
+T => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_4bit|T_flipflop:FF2
+CLK => Q~reg0.CLK
+Reset => Q~reg0.ACLR
+T => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|count_4bit|T_flipflop:FF3
+CLK => Q~reg0.CLK
+Reset => Q~reg0.ACLR
+T => Q~reg0.ENA
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
