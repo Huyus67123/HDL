@@ -1,0 +1,8 @@
+module Mux_2to1(x,y,s,m)
+	input x,y,s;
+	output m;
+	and #5 	g1(f1,a,s);
+				g2(f2,b,ns);
+	or  #5	g3(m,f1,f2);
+	not 		g4(ns,s);
+endmodule

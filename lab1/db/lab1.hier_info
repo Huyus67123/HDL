@@ -1,0 +1,65 @@
+|lab1_3
+D => D.IN3
+CLK => CLK.IN2
+Qa <= D_latch:comb_3.port2
+Qb <= D_flipflop:comb_4.port2
+Qc <= D_flipflop:comb_5.port2
+Qan <= D_latch:comb_3.port2
+Qbn <= D_flipflop:comb_4.port3
+Qcn <= D_flipflop:comb_5.port3
+
+
+|lab1_3|D_latch:comb_3
+D => n1.IN0
+D => n2.IN0
+CLK => n1.IN1
+CLK => n2.IN1
+Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab1_3|D_flipflop:comb_4
+D => D.IN1
+CLK => CLK.IN1
+Q <= D_latch:comb_5.port2
+Qn <= D_latch:comb_5.port2
+
+
+|lab1_3|D_flipflop:comb_4|D_latch:comb_3
+D => n1.IN0
+D => n2.IN0
+CLK => n1.IN1
+CLK => n2.IN1
+Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab1_3|D_flipflop:comb_4|D_latch:comb_5
+D => n1.IN0
+D => n2.IN0
+CLK => n1.IN1
+CLK => n2.IN1
+Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab1_3|D_flipflop:comb_5
+D => D.IN1
+CLK => CLK.IN1
+Q <= D_latch:comb_5.port2
+Qn <= D_latch:comb_5.port2
+
+
+|lab1_3|D_flipflop:comb_5|D_latch:comb_3
+D => n1.IN0
+D => n2.IN0
+CLK => n1.IN1
+CLK => n2.IN1
+Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab1_3|D_flipflop:comb_5|D_latch:comb_5
+D => n1.IN0
+D => n2.IN0
+CLK => n1.IN1
+CLK => n2.IN1
+Q <= Q.DB_MAX_OUTPUT_PORT_TYPE
+
+

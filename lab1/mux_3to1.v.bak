@@ -1,0 +1,8 @@
+module mux_3to1(in1,in2,in3,sel,out);
+	input in1,in2,in3;
+	input [1:0] sel;
+	output out;
+	wire o1;
+	mux_2to1 (in1,in2,o1);
+	mux_2to1 (o1,in3,out);
+endmodule
