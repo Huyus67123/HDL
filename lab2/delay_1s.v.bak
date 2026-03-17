@@ -1,0 +1,13 @@
+module delay_1s(
+	input CLK,
+	reg [25:0]Q,
+	output done
+)
+	always @ (CLK) begin
+		Q <= Q+1'd1;
+		if (Q == 26'd50000000) begin
+			done <= 1'b1;
+			Q <= 26'd0;
+		end
+	end
+endmodule

@@ -6,7 +6,11 @@ module count_4bit_2(
         if (!Reset) begin
             Q <= 4'b0000; 
         end else if (Ena) begin
-            Q <= Q + 1'b1;
+				if (Q == 4'd9) begin 
+					Q<=0;
+				end else begin
+					Q <= Q + 1'b1;
+				end
         end
     end
 endmodule

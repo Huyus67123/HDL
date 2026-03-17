@@ -1,0 +1,10 @@
+module lab2_2 (
+	input CLK,Reset,ENA,
+	output [6:0] out
+)
+	reg [3:0]Q
+	always @ (posedge CLK or negedge Reset) begin
+			count_4bit_2(ENA,CLK,Reset,Q);
+	end
+	bcd_to_led7(Q,out);
+endmodule
