@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2
-Tue Mar 17 19:53:50 2026
+Tue Mar 17 21:34:57 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,10 +13,11 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -42,16 +43,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Mar 17 19:53:50 2026           ;
+; Analysis & Synthesis Status        ; Successful - Tue Mar 17 21:34:56 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; lab2                                            ;
-; Top-level Entity Name              ; lab2_3                                          ;
+; Top-level Entity Name              ; lab2_3_1                                        ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 72                                              ;
-;     Total combinational functions  ; 72                                              ;
-;     Dedicated logic registers      ; 35                                              ;
-; Total registers                    ; 35                                              ;
-; Total pins                         ; 17                                              ;
+; Total logic elements               ; 37                                              ;
+;     Total combinational functions  ; 37                                              ;
+;     Dedicated logic registers      ; 3                                               ;
+; Total registers                    ; 3                                               ;
+; Total pins                         ; 59                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -65,7 +66,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP2C35F672C6       ;                    ;
-; Top-level entity name                                                      ; lab2_3             ; lab2               ;
+; Top-level entity name                                                      ; lab2_3_1           ; lab2               ;
 ; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -155,16 +156,15 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path           ; Library ;
-+----------------------------------+-----------------+------------------------+----------------------------------------+---------+
-; count_4bit_2.v                   ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/count_4bit_2.v ;         ;
-; bcd_to_led7.v                    ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/bcd_to_led7.v  ;         ;
-; delay_1s.v                       ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/delay_1s.v     ;         ;
-; lab2_3.v                         ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/lab2_3.v       ;         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                      ;
++----------------------------------+-----------------+------------------------+-------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path        ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------+---------+
+; ../lab1/lab1_b.v                 ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab1/lab1_b.v    ;         ;
+; lab2_3_1.v                       ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab2/lab2_3_1.v  ;         ;
+; ../lab1/segment_7.v              ; yes             ; User Verilog HDL File  ; C:/Users/tgiah/HDL/lab1/segment_7.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -172,43 +172,58 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 72    ;
+; Estimated Total logic elements              ; 37    ;
 ;                                             ;       ;
-; Total combinational functions               ; 72    ;
+; Total combinational functions               ; 37    ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 28    ;
-;     -- 3 input functions                    ; 1     ;
-;     -- <=2 input functions                  ; 43    ;
+;     -- 4 input functions                    ; 1     ;
+;     -- 3 input functions                    ; 24    ;
+;     -- <=2 input functions                  ; 12    ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 47    ;
-;     -- arithmetic mode                      ; 25    ;
+;     -- normal mode                          ; 37    ;
+;     -- arithmetic mode                      ; 0     ;
 ;                                             ;       ;
-; Total registers                             ; 35    ;
-;     -- Dedicated logic registers            ; 35    ;
+; Total registers                             ; 3     ;
+;     -- Dedicated logic registers            ; 3     ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 17    ;
+; I/O pins                                    ; 59    ;
 ; Embedded Multiplier 9-bit elements          ; 0     ;
-; Maximum fan-out node                        ; CLK   ;
-; Maximum fan-out                             ; 27    ;
-; Total fan-out                               ; 290   ;
-; Average fan-out                             ; 2.34  ;
+; Maximum fan-out node                        ; Q[1]  ;
+; Maximum fan-out                             ; 36    ;
+; Total fan-out                               ; 166   ;
+; Average fan-out                             ; 1.68  ;
 +---------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                  ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name          ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------+--------------+
-; |lab2_3                    ; 72 (5)            ; 35 (4)       ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |lab2_3                      ; work         ;
-;    |bcd_to_led7:comb_21|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3|bcd_to_led7:comb_21  ; work         ;
-;    |bcd_to_led7:comb_23|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3|bcd_to_led7:comb_23  ; work         ;
-;    |count_4bit_2:comb_22|  ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3|count_4bit_2:comb_22 ; work         ;
-;    |delay_1s:comb_3|       ; 48 (48)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3|delay_1s:comb_3      ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                             ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                     ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
+; |lab2_3_1                  ; 37 (2)            ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 59   ; 0            ; |lab2_3_1                               ; work         ;
+;    |lab1_b:mydecoder|      ; 35 (4)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder              ; work         ;
+;       |segment_7:s0|       ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s0 ; work         ;
+;       |segment_7:s1|       ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s1 ; work         ;
+;       |segment_7:s2|       ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s2 ; work         ;
+;       |segment_7:s3|       ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s3 ; work         ;
+;       |segment_7:s4|       ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s4 ; work         ;
+;       |segment_7:s5|       ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s5 ; work         ;
+;       |segment_7:s6|       ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s6 ; work         ;
+;       |segment_7:s7|       ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab2_3_1|lab1_b:mydecoder|segment_7:s7 ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; Q[3]                                  ; Lost fanout        ;
+; Total Number of Removed Registers = 1 ;                    ;
++---------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -216,24 +231,31 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 35    ;
+; Total registers                              ; 3     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 4     ;
+; Number of registers using Asynchronous Clear ; 3     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 3     ;
+; Number of registers using Clock Enable       ; 2     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                   ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lab2_3|bcd_to_led7:comb_21|out[0] ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |lab2_3|bcd_to_led7:comb_23|out[0] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|H2[0]               ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s7|out[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s6|out[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s5|out[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s4|out[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s3|out[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s2|out[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s1|out[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |lab2_3_1|lab1_b:mydecoder|segment_7:s0|out[1] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
 
 
 +-------------------------------+
@@ -251,9 +273,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Mar 17 19:53:48 2026
+    Info: Processing started: Tue Mar 17 21:34:52 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2 -c lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tgiah/hdl/lab1/lab1_b.v
+    Info (12023): Found entity 1: lab1_b
 Info (12021): Found 1 design units, including 1 entities, in source file d_flipflop.v
     Info (12023): Found entity 1: D_flipflop
 Info (12021): Found 1 design units, including 1 entities, in source file count_4bit.v
@@ -273,6 +297,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file lab2_1.
     Info (12023): Found entity 1: lab2_1
 Info (12021): Found 1 design units, including 1 entities, in source file lab2_3.v
     Info (12023): Found entity 1: lab2_3
+Info (12021): Found 1 design units, including 1 entities, in source file lab2_3_1.v
+    Info (12023): Found entity 1: lab2_3_1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/tgiah/hdl/lab1/segment_7.v
+    Info (12023): Found entity 1: segment_7
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_2.v(7): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_2.v(8): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_2.v(9): instance has no name
@@ -282,20 +310,21 @@ Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(8): inst
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(14): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(16): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(17): instance has no name
-Info (12127): Elaborating entity "lab2_3" for the top level hierarchy
-Info (12128): Elaborating entity "delay_1s" for hierarchy "delay_1s:comb_3"
-Info (12128): Elaborating entity "bcd_to_led7" for hierarchy "bcd_to_led7:comb_21"
-Info (12128): Elaborating entity "count_4bit_2" for hierarchy "count_4bit_2:comb_22"
+Info (12127): Elaborating entity "lab2_3_1" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at lab2_3_1.v(14): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "lab1_b" for hierarchy "lab1_b:mydecoder"
+Info (12128): Elaborating entity "segment_7" for hierarchy "lab1_b:mydecoder|segment_7:s0"
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 90 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 96 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 14 output pins
-    Info (21061): Implemented 73 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4612 megabytes
-    Info: Processing ended: Tue Mar 17 19:53:50 2026
-    Info: Elapsed time: 00:00:02
+    Info (21059): Implemented 56 output pins
+    Info (21061): Implemented 37 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4611 megabytes
+    Info: Processing ended: Tue Mar 17 21:34:57 2026
+    Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:01
 
 
