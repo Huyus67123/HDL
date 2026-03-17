@@ -1,10 +1,8 @@
-module lab2_2 (
+module lab2_1 (
 	input CLK,Reset,ENA,
 	output [6:0] out
 );
 	wire [3:0]Q;
-	wire n;
-	delay_1s (CLK,n);
-	count_4bit_2(ENA,n,Reset,Q);
+	count_4bit_2(ENA,CLK,Reset,Q);
 	bcd_to_led7(Q,out);
 endmodule
