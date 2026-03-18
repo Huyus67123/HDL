@@ -5,7 +5,7 @@ module delay_1s(
 	reg [25:0]Q;
 	reg done;
 	always @ (posedge CLK) begin
-		if (Q == 26'd50000000) begin
+		if (Q == 26'd49999999) begin
 			done <= 1'b1;
 			Q <= 26'd0;
 		end else begin
