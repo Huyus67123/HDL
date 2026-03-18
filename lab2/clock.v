@@ -1,90 +1,109 @@
 module clock(
     input CLK, reset, load,
-    input [3:0] H0,H1,M0,M1,S0,S1,
-    output [6:0] led0,led1,led2,led3,led4,led5
+    input [15:0] SW,
+    output [6:0] HEX7,HEX6,HEX5,HEX4,HEX3,HEX2,
+    output reg error
 );
 
+    //================ CLOCK 1Hz =================
     wire clk_1s;
-    delay_1s d1 (CLK, clk_1s);
+    delay_1s d1(CLK, clk_1s);
 
-    // thanh ghi thời gian
-    reg [3:0] qH0,qH1,qM0,qM1,qS0,qS1;
+    //================ REG =================
+    reg [3:0] H0,H1,M0,M1,S0,S1;
 
-    // FSM state
+    //================ FSM =================
     reg state;
-    parameter RUN = 1'b0,
+    parameter IDLE = 1'b0,
               LOAD = 1'b1;
 
-    // ================= FSM =================
+    //================ DECODE SW =================
+    wire [3:0] sw_H1 = SW[15:12];
+    wire [3:0] sw_H0 = SW[11:8];
+    wire [3:0] sw_M1 = SW[7:4];
+    wire [3:0] sw_M0 = SW[3:0];
+
+    //================ VALID CHECK =================
+    wire valid_hour = (sw_H1 < 3) && (sw_H0 < 10) &&
+                      !(sw_H1 == 2 && sw_H0 > 3);
+
+    wire valid_min  = (sw_M1 < 6) && (sw_M0 < 10);
+
+    //================ FSM =================
     always @(posedge clk_1s or negedge reset) begin
         if (!reset) begin
-            qH0 <= 0; qH1 <= 0;
-            qM0 <= 0; qM1 <= 0;
-            qS0 <= 0; qS1 <= 0;
-            state <= RUN;
+            H0<=0; H1<=0;
+            M0<=0; M1<=0;
+            S0<=0; S1<=0;
+            state <= IDLE;
+            error <= 0;
         end else begin
             case(state)
 
-            RUN: begin
+            //========= CHẠY =========
+            IDLE: begin
                 if (load)
                     state <= LOAD;
                 else begin
-                    // ===== tăng giây =====
-                    if (qS0 == 9) begin
-                        qS0 <= 0;
+                    // tăng giây
+                    if (S0 == 9) begin
+                        S0 <= 0;
+                        if (S1 == 5) begin
+                            S1 <= 0;
 
-                        if (qS1 == 5) begin
-                            qS1 <= 0;
+                            // tăng phút
+                            if (M0 == 9) begin
+                                M0 <= 0;
+                                if (M1 == 5) begin
+                                    M1 <= 0;
 
-                            // ===== tăng phút =====
-                            if (qM0 == 9) begin
-                                qM0 <= 0;
-
-                                if (qM1 == 5) begin
-                                    qM1 <= 0;
-
-                                    // ===== tăng giờ =====
-                                    if (qH0 == 9) begin
-                                        qH0 <= 0;
-
-                                        if (qH1 == 2 && qH0 == 3) begin
-                                            qH1 <= 0;
-                                            qH0 <= 0;
-                                        end else begin
-                                            qH1 <= qH1 + 1;
-                                        end
-
+                                    // tăng giờ
+                                    if (H1 == 2 && H0 == 3) begin
+                                        H1 <= 0;
+                                        H0 <= 0;
+                                    end else if (H0 == 9) begin
+                                        H0 <= 0;
+                                        H1 <= H1 + 1;
                                     end else begin
-                                        qH0 <= qH0 + 1;
+                                        H0 <= H0 + 1;
                                     end
 
-                                end else qM1 <= qM1 + 1;
+                                end else M1 <= M1 + 1;
 
-                            end else qM0 <= qM0 + 1;
+                            end else M0 <= M0 + 1;
 
-                        end else qS1 <= qS1 + 1;
+                        end else S1 <= S1 + 1;
 
-                    end else qS0 <= qS0 + 1;
+                    end else S0 <= S0 + 1;
                 end
             end
 
+            //========= LOAD =========
             LOAD: begin
-                qH0 <= H0; qH1 <= H1;
-                qM0 <= M0; qM1 <= M1;
-                qS0 <= S0; qS1 <= S1;
-                state <= RUN;
+                if (valid_hour && valid_min) begin
+                    H1 <= sw_H1;
+                    H0 <= sw_H0;
+                    M1 <= sw_M1;
+                    M0 <= sw_M0;
+                    S0 <= 0;
+                    S1 <= 0;
+                    error <= 0;
+                end else begin
+                    error <= 1; // báo lỗi
+                end
+                state <= IDLE;
             end
 
             endcase
         end
     end
 
-    // ================= LED =================
-    bcd_to_led7 b0(qH0,led0);
-    bcd_to_led7 b1(qH1,led1);
-    bcd_to_led7 b2(qM0,led2);
-    bcd_to_led7 b3(qM1,led3);
-    bcd_to_led7 b4(qS0,led4);
-    bcd_to_led7 b5(qS1,led5);
+    //================ DISPLAY =================
+    bcd_to_led7 d7(H1,HEX7);
+    bcd_to_led7 d6(H0,HEX6);
+    bcd_to_led7 d5(M1,HEX5);
+    bcd_to_led7 d4(M0,HEX4);
+    bcd_to_led7 d3(S1,HEX3);
+    bcd_to_led7 d2(S0,HEX2);
 
 endmodule

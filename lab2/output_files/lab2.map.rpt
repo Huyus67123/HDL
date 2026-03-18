@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab2
-Wed Mar 18 21:04:25 2026
+Wed Mar 18 21:21:17 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -44,16 +44,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Mar 18 21:04:25 2026           ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 18 21:21:17 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; lab2                                            ;
 ; Top-level Entity Name              ; clock                                           ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 146                                             ;
-;     Total combinational functions  ; 146                                             ;
-;     Dedicated logic registers      ; 52                                              ;
-; Total registers                    ; 52                                              ;
-; Total pins                         ; 69                                              ;
+; Total logic elements               ; 156                                             ;
+;     Total combinational functions  ; 156                                             ;
+;     Dedicated logic registers      ; 53                                              ;
+; Total registers                    ; 53                                              ;
+; Total pins                         ; 62                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -173,28 +173,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 146   ;
+; Estimated Total logic elements              ; 156   ;
 ;                                             ;       ;
-; Total combinational functions               ; 146   ;
+; Total combinational functions               ; 156   ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 84    ;
-;     -- 3 input functions                    ; 14    ;
-;     -- <=2 input functions                  ; 48    ;
+;     -- 4 input functions                    ; 91    ;
+;     -- 3 input functions                    ; 18    ;
+;     -- <=2 input functions                  ; 47    ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 121   ;
+;     -- normal mode                          ; 131   ;
 ;     -- arithmetic mode                      ; 25    ;
 ;                                             ;       ;
-; Total registers                             ; 52    ;
-;     -- Dedicated logic registers            ; 52    ;
+; Total registers                             ; 53    ;
+;     -- Dedicated logic registers            ; 53    ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 69    ;
+; I/O pins                                    ; 62    ;
 ; Embedded Multiplier 9-bit elements          ; 0     ;
 ; Maximum fan-out node                        ; state ;
-; Maximum fan-out                             ; 33    ;
-; Total fan-out                               ; 669   ;
-; Average fan-out                             ; 2.51  ;
+; Maximum fan-out                             ; 36    ;
+; Total fan-out                               ; 708   ;
+; Average fan-out                             ; 2.61  ;
 +---------------------------------------------+-------+
 
 
@@ -203,13 +203,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name   ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
-; |clock                     ; 146 (56)          ; 52 (25)      ; 0           ; 0            ; 0       ; 0         ; 69   ; 0            ; |clock                ; work         ;
-;    |bcd_to_led7:b0|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:b0 ; work         ;
-;    |bcd_to_led7:b1|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:b1 ; work         ;
-;    |bcd_to_led7:b2|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:b2 ; work         ;
-;    |bcd_to_led7:b3|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:b3 ; work         ;
-;    |bcd_to_led7:b4|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:b4 ; work         ;
-;    |bcd_to_led7:b5|        ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:b5 ; work         ;
+; |clock                     ; 156 (66)          ; 53 (26)      ; 0           ; 0            ; 0       ; 0         ; 62   ; 0            ; |clock                ; work         ;
+;    |bcd_to_led7:d2|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:d2 ; work         ;
+;    |bcd_to_led7:d3|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:d3 ; work         ;
+;    |bcd_to_led7:d4|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:d4 ; work         ;
+;    |bcd_to_led7:d5|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:d5 ; work         ;
+;    |bcd_to_led7:d6|        ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:d6 ; work         ;
+;    |bcd_to_led7:d7|        ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|bcd_to_led7:d7 ; work         ;
 ;    |delay_1s:d1|           ; 47 (47)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |clock|delay_1s:d1    ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -220,12 +220,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 52    ;
+; Total registers                              ; 53    ;
 ; Number of registers using Synchronous Clear  ; 1     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 25    ;
+; Number of registers using Asynchronous Clear ; 26    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 24    ;
+; Number of registers using Clock Enable       ; 21    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -235,18 +235,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |clock|qS0[0]                ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |clock|qS1[0]                ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |clock|qM0[2]                ;
-; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |clock|qM1[2]                ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |clock|qH0[3]                ;
-; 9:1                ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |clock|qH1[3]                ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:b0|out[0] ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:b1|out[6] ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:b2|out[6] ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:b3|out[5] ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:b4|out[6] ;
-; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:b5|out[0] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |clock|S0[3]                 ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |clock|S1[3]                 ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |clock|M0[0]                 ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |clock|M1[2]                 ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |clock|H1[0]                 ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; Yes        ; |clock|H0[3]                 ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:d7|out[6] ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:d6|out[6] ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:d5|out[6] ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:d4|out[0] ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:d3|out[6] ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |clock|bcd_to_led7:d2|out[0] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
 
 
@@ -255,7 +255,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+-------+----------------------------------------------+
 ; Parameter Name ; Value ; Type                                         ;
 +----------------+-------+----------------------------------------------+
-; RUN            ; 0     ; Unsigned Binary                              ;
+; IDLE           ; 0     ; Unsigned Binary                              ;
 ; LOAD           ; 1     ; Unsigned Binary                              ;
 +----------------+-------+----------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -276,7 +276,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Mar 18 21:04:24 2026
+    Info: Processing started: Wed Mar 18 21:21:15 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab2 -c lab2
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file /users/tgiah/hdl/lab1/lab1_b.v
@@ -318,26 +318,26 @@ Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(14): ins
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(16): instance has no name
 Critical Warning (10846): Verilog HDL Instantiation warning at lab2_3.v(17): instance has no name
 Info (12127): Elaborating entity "clock" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at clock.v(54): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at clock.v(58): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at clock.v(61): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at clock.v(63): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at clock.v(65): truncated value with size 32 to match size of target (4)
-Warning (10230): Verilog HDL assignment warning at clock.v(67): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at clock.v(66): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at clock.v(68): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at clock.v(71): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at clock.v(73): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at clock.v(75): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at clock.v(77): truncated value with size 32 to match size of target (4)
 Info (12128): Elaborating entity "delay_1s" for hierarchy "delay_1s:d1"
-Info (12128): Elaborating entity "bcd_to_led7" for hierarchy "bcd_to_led7:b0"
+Info (12128): Elaborating entity "bcd_to_led7" for hierarchy "bcd_to_led7:d7"
 Info (144001): Generated suppressed messages file C:/Users/tgiah/HDL/lab2/output_files/lab2.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 216 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 27 input pins
-    Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 147 logic cells
+Info (21057): Implemented 220 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 19 input pins
+    Info (21059): Implemented 43 output pins
+    Info (21061): Implemented 158 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 17 warnings
-    Info: Peak virtual memory: 4612 megabytes
-    Info: Processing ended: Wed Mar 18 21:04:25 2026
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 4615 megabytes
+    Info: Processing ended: Wed Mar 18 21:21:17 2026
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 
 +------------------------------------------+
