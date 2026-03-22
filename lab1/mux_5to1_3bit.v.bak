@@ -1,6 +1,0 @@
-module mux_5to1(u,v,w,x,y,s,m);
-	input	[2:0]u,v,x,w,y;
-	input	[2:0]s;
-	output	[2:0]m;
-	mux_5to1 [2:0](u,v,x,w,y,s,m);
-endmodule

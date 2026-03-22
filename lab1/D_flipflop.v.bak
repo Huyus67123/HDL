@@ -1,7 +1,0 @@
-module D_flipflop(D,CLK,Q);
-	input D,CLK;
-	output Q,~Q;
-	wire Qm;
-	D_latch(D,~CLK,Qm);
-	D_latch(D,CLK,Q);
-endmodule
