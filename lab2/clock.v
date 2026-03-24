@@ -1,109 +1,89 @@
 module clock(
-    input CLK, reset, load,
+    input CLK, reset_n, load, // Đổi thành reset_n cho đồng bộ tích cực thấp
     input [15:0] SW,
-    output [6:0] HEX7,HEX6,HEX5,HEX4,HEX3,HEX2,
+    output [6:0] H7, H6, H5, H4, H3, H2,
     output reg error
 );
 
-    //================ CLOCK 1Hz =================
-    wire clk_1s;
-    delay_1s d1(CLK, clk_1s);
+    //================ CLOCK TICK 1Hz =================
+    // Dùng module delay tạo xung Tick (chỉ cao 1 chu kỳ 25MHz mỗi giây)
+    wire tick_1s;
+    reg [24:0] count;
+    
+    always @(posedge CLK or negedge reset_n) begin
+        if (!reset_n) count <= 0;
+        else if (count == 25'd24_999_999) count <= 0;
+        else count <= count + 1;
+    end
+    assign tick_1s = (count == 25'd24_999_999);
 
     //================ REG =================
-    reg [3:0] H0,H1,M0,M1,S0,S1;
-
-    //================ FSM =================
+    reg [3:0] Ho1, Ho0, M1, M0, S1, S0;
     reg state;
-    parameter IDLE = 1'b0,
-              LOAD = 1'b1;
+    parameter IDLE = 1'b0, LOAD = 1'b1;
 
-    //================ DECODE SW =================
+    //================ VALID CHECK =================
     wire [3:0] sw_H1 = SW[15:12];
     wire [3:0] sw_H0 = SW[11:8];
     wire [3:0] sw_M1 = SW[7:4];
     wire [3:0] sw_M0 = SW[3:0];
 
-    //================ VALID CHECK =================
-    wire valid_hour = (sw_H1 < 3) && (sw_H0 < 10) &&
-                      !(sw_H1 == 2 && sw_H0 > 3);
+    wire valid_hour = (sw_H1 < 2) || (sw_H1 == 2 && sw_H0 < 4); // 00-23
+    wire valid_min  = (sw_M1 < 6); // 00-59
 
-    wire valid_min  = (sw_M1 < 6) && (sw_M0 < 10);
-
-    //================ FSM =================
-    always @(posedge clk_1s or negedge reset) begin
-        if (!reset) begin
-            H0<=0; H1<=0;
-            M0<=0; M1<=0;
-            S0<=0; S1<=0;
+    //================ FSM (Chạy bằng CLK hệ thống) =================
+    always @(posedge CLK or negedge reset_n) begin
+        if (!reset_n) begin
+            {Ho1, Ho0, M1, M0, S1, S0} <= 24'b0;
             state <= IDLE;
             error <= 0;
         end else begin
             case(state)
-
-            //========= CHẠY =========
-            IDLE: begin
-                if (load)
-                    state <= LOAD;
-                else begin
-                    // tăng giây
-                    if (S0 == 9) begin
-                        S0 <= 0;
-                        if (S1 == 5) begin
-                            S1 <= 0;
-
-                            // tăng phút
-                            if (M0 == 9) begin
-                                M0 <= 0;
-                                if (M1 == 5) begin
-                                    M1 <= 0;
-
-                                    // tăng giờ
-                                    if (H1 == 2 && H0 == 3) begin
-                                        H1 <= 0;
-                                        H0 <= 0;
-                                    end else if (H0 == 9) begin
-                                        H0 <= 0;
-                                        H1 <= H1 + 1;
-                                    end else begin
-                                        H0 <= H0 + 1;
-                                    end
-
-                                end else M1 <= M1 + 1;
-
-                            end else M0 <= M0 + 1;
-
-                        end else S1 <= S1 + 1;
-
-                    end else S0 <= S0 + 1;
+                IDLE: begin
+                    if (load) begin
+                        state <= LOAD;
+                    end else if (tick_1s) begin // Chỉ tăng thời gian khi có tick_1s
+                        if (S0 == 9) begin
+                            S0 <= 0;
+                            if (S1 == 5) begin
+                                S1 <= 0;
+                                if (M0 == 9) begin
+                                    M0 <= 0;
+                                    if (M1 == 5) begin
+                                        M1 <= 0;
+                                        if (Ho1 == 2 && Ho0 == 3) begin
+                                            Ho1 <= 0; Ho0 <= 0;
+                                        end else if (Ho0 == 9) begin
+                                            Ho0 <= 0; Ho1 <= Ho1 + 1;
+                                        end else Ho0 <= Ho0 + 1;
+                                    end else M1 <= M1 + 1;
+                                end else M0 <= M0 + 1;
+                            end else S1 <= S1 + 1;
+                        end else S0 <= S0 + 1;
+                    end
                 end
-            end
 
-            //========= LOAD =========
-            LOAD: begin
-                if (valid_hour && valid_min) begin
-                    H1 <= sw_H1;
-                    H0 <= sw_H0;
-                    M1 <= sw_M1;
-                    M0 <= sw_M0;
-                    S0 <= 0;
-                    S1 <= 0;
-                    error <= 0;
-                end else begin
-                    error <= 1; // báo lỗi
+                LOAD: begin
+                    if (valid_hour && valid_min) begin
+                        Ho1 <= sw_H1; Ho0 <= sw_H0;
+                        M1 <= sw_M1; M0 <= sw_M0;
+                        S1 <= 0; S0 <= 0;
+                        error <= 0;
+                    end else begin
+                        error <= 1;
+                    end
+                    state <= IDLE;
                 end
-                state <= IDLE;
-            end
-
             endcase
         end
     end
 
     //================ DISPLAY =================
-    bcd_to_led7 d7(H1,HEX7);
-    bcd_to_led7 d6(H0,HEX6);
-    bcd_to_led7 d5(M1,HEX5);
-    bcd_to_led7 d4(M0,HEX4);
-    bcd_to_led7 d3(S1,HEX3);
-    bcd_to_led7 d2(S0,HEX2);
+    bcd_to_led7 d7(Ho1, H7);
+    bcd_to_led7 d6(Ho0, H6);
+    bcd_to_led7 d5(M1, H5);
+    bcd_to_led7 d4(M0, H4);
+    bcd_to_led7 d3(S1, H3);
+    bcd_to_led7 d2(S0, H2);
 
 endmodule

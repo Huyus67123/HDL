@@ -15,6 +15,6 @@ module lab2_3_1(
 		end
 	end
 
-	lab1_b mydecoder(Q[2:0], H0,H1,H2,H3,H4,H5,H6,H7);
+	lab1_b mydecoder(Q[2:0], H7,H6,H5,H4,H3,H2,H1,H0);
 
 endmodule
