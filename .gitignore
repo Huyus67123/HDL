@@ -21,3 +21,6 @@ greybox_tmp/
 *.cdb
 *.hdb
 *.ddb
+*.vwf
+*.qsf
+*.temp
